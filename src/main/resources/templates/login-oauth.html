@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Google</title>
+    <style>
+        /* styles.css */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* 배경 색상 */
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+        }
+
+        .login-title {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .google-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white; /* 버튼 배경 색상 */
+            color: #333; /* 버튼 글자 색상 */
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .google-button:hover {
+            background-color: #f9f9f9; /* 호버 시 버튼 색상 */
+            transform: scale(1.05); /* 호버 시 크기 변화 */
+        }
+
+        .google-logo {
+            width: 20px; /* 구글 로고 크기 */
+            height: auto; /* 비율 유지 */
+            margin-right: 8px; /* 로고와 텍스트 간 간격 */
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <a href="/oauth2/authorization/google" class="google-button">
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" class="google-logo">
+        Sign in with Google
+    </a>
+</div>
+</body>
+</html>
