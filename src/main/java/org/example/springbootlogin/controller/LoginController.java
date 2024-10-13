@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
 
+/**
+ * 다양한 인증방법 구현 예제
+ */
 @Controller
 @RequestMapping("/login")
 public class LoginController {
