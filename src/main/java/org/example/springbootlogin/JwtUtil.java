@@ -4,10 +4,17 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Function;
 
 @Component
@@ -48,5 +55,14 @@ public class JwtUtil {
 
     public Date extractExpiration(String token) {
         return extractClaims(token, Claims::getExpiration);
+    }
+
+    public Authentication getAuthentication(String token) {
+        // JWT를 파싱하여 사용자 정보를 가져옵니다.
+        String userId = extractUserId(token);
+        List<GrantedAuthority> authorities = Collections.emptyList();
+
+        UserDetails userDetails = new User(userId, "", authorities); // UserDetails 객체 생성
+        return new UsernamePasswordAuthenticationToken(userDetails, token, authorities); // 인증 객체 생성
     }
 }
