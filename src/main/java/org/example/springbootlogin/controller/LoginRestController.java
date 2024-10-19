@@ -5,6 +5,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.springbootlogin.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -65,6 +67,12 @@ public class LoginRestController {
         errorResponse.put("message", "Invalid credentials");
 
         return ResponseEntity.status(401).body(errorResponse);
+    }
+
+    @GetMapping("/oauth2/login/success")
+    public String loginSuccess(@AuthenticationPrincipal OAuth2User oauthUser) {
+        String email = oauthUser.getAttribute("email");
+        return "Welcome, " + email;
     }
 
     @GetMapping("/profile/{id}")
